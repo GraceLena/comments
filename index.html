@@ -5,19 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Комментарии</title>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
- 
-    <!-- Загрузим React. -->
-    <!-- Примечание: для деплоя на продакшен замените окончание «development.js» на «production.min.js». -->
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-    
-    <!-- Don't use this in production:--> 
-    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
-
-  </head>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="build/build.css">
+    <script src="build/build.js" defer></script>
+   </head>
   <body>
     <header class="container header-container">
       <div class="banner-top-container"></div>      
@@ -39,8 +30,6 @@
           <h3 class="col-title">Другие темы</h3>
         </section>
         <section id="col-center">
-            
-
                       
         </section>
         <section id="col-right"></section>
@@ -80,103 +69,6 @@
           <address><i class="fa fa-envelope"></i> aaa@info.ru</address>
         </div>
       </section>
-    </footer>    
-
-    <script type="text/babel">
-      const CommentItem = (props) => {
-        return (
-          <div className="comment">
-          <div className="comment-title">
-            <h4 className="comment-name">{props.name}</h4>
-            <div className="comment-time">{props.time}</div>
-          </div>
-          <p className="comment-text">{props.text}</p>
-        </div>
-        );        
-      }
-
-      class CommentsApp extends React.Component {
-        constructor(){
-          super();
-
-          if(!localStorage.getItem('usersComments')) {
-            localStorage.setItem('usersComments', {});
-          }
-
-          this.state = localStorage.getItem('usersComments');
-        }
-
-        addComment() {
-          const usersComments = this.state.usersComments;
-          const commentTime = new Date();
-          usersComments.push({
-            name: this.state.newUserName,
-            text: this.state.newText,
-            time: commentTime.getHours() + ' ' + commentTime.getMinutes() + ' ' + commentTime.getSeconds() + ' ' + commentTime.getDate() + ' ' + commentTime.getMonth() + ' ' + commentTime.getFullYear();
-          });
-          this.setState({
-            usersComments,
-            newUserName: '',
-            newText: ''
-          });
-          localStorage.setItem(usersComments);
-        }
-
-        render() {
-          return (
-          <div id="col-center-container">
-            <h3 class="col-title">Текущая тема</h3>
-            <div id="comments-container">
-              {
-                this.state.usersComments.map((comment, i) => {
-                  return (
-                    <CommentItem 
-                      key={i}
-                      name={comment.name}
-                      text={comment.text}
-                      time={comment.time}
-                    />
-                  );
-                });
-              }
-            </div>
-            <form id="form-comment">
-              <label for="user-name">Ваше имя:</label>
-              <input
-                type="text"
-                id="user-name"
-                value={this.state.newUserName}
-                onChange={ev=>{
-                  this.setState({newUserName: ev.target.value});
-                }}
-                required />
-              <label for="user-text">Ваш комментарий:</label>
-              <textarea
-                id="user-text"
-                value={this.state.newText}
-                onChange={ev=>{
-                  this.setState({newText: ev.target.value});
-                }}
-                required>
-              </textarea>
-              <button
-                class="btn comment-btn"
-                onSubmit={ev=>{
-                  addComment();                  
-                }}
-                >
-                Отправить
-              </button>
-            </form>
-          </div>      
-        );
-      }
-    }
-        
-
-      ReactDOM.render(<CommentItem />, document.getElementById('comments-container'));
-
-      
-    </script>
+    </footer>
   </body>
 </html>
