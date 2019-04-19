@@ -42,8 +42,8 @@ class CommentsApp extends React.Component {
 		event.preventDefault();
 		const comments = this.state.comments;
 		comments.push({
-			name: this.state.newUserName,
-			text: this.state.newText,
+			name: this.state.newUserName.replace(/<\/?([a-z]+)(\s*([^>]*))*>/gi, ''),
+			text: this.state.newText.replace(/<\/?([a-z]+)\s*([^>]*)>/gmi, ''),
 			time: this.getDateTimeNow()
 		});
 		this.setState({
