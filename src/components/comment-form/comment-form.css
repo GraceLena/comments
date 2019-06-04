@@ -1,0 +1,31 @@
+label {
+	margin: 10px 0;
+}
+
+#form-comment {
+	display: flex;
+	flex-direction: column;
+}
+
+#user-name {
+	border: 1px solid #d9d9fc;
+	border-radius: 5px;
+	padding: 5px;
+	width: 200px;
+}
+
+#user-text {
+	border: 1px solid #d9d9fc;
+	border-radius: 5px;
+	padding: 7px;
+	resize: none;
+	height: 150px;
+	font-family: inherit;
+	font-size: 14px;
+}
+
+.comment-btn {
+	width: 100px;
+	height: 35px;
+	margin-top: 10px;
+}

@@ -1,0 +1,13 @@
+#col-center-container {
+	width: 550px;
+	box-shadow: 0 0 2px 2px #00000020;
+	border-radius: 5px;
+	padding: 25px;
+	}
+
+.col-title {
+	color: #1d1d99;
+	margin: 0 0 20px 0;
+	padding: 5px 0;
+	border-bottom: 1px solid #d9d9fc;
+}
